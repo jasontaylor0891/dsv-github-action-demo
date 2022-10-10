@@ -31,26 +31,6 @@ jobs:
           setEnv: true
           retrieve: |
             [
-             {"secretPath": "github-actions:demo-secret", "password": "value1", "outputVariable": "RETURN_VALUE_1"},
-             {"secretPath": "github-actions:demo-secret", "token": "value2", "outputVariable": "RETURN_VALUE_2"}
+             {"secretPath": "test:sdk:simple", "password": "value1", "outputVariable": "RETURN_VALUE_1"},
+             {"secretPath": "test:sdk:simple", "username": "value2", "outputVariable": "RETURN_VALUE_2"}
             ]
-      - name: validate-first-value
-        if: always()
-        run: |
-          if [ "${{ steps.dsv.outputs.RETURN_VALUE_1 }}" == "${{ secrets.DSV_EXPECTED_VALUE_1 }}" ]; then
-              echo "✅ test value is matched"
-              exit 0
-          else
-              echo "::error ❌ mismatch, failed to return test value"
-              exit 1
-          fi
-      - name: validate-second-value
-        if: always()
-        run: |
-          if [ "${{ steps.dsv.outputs.RETURN_VALUE_2 }}" == "${{ secrets.DSV_EXPECTED_VALUE_2 }}" ]; then
-              echo "✅ test value is matched"
-              exit 0
-          else
-              echo -e "::error ❌ mismatch, failed to return test value"
-              exit 1
-          fi
