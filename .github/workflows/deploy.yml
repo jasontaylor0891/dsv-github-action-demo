@@ -31,10 +31,6 @@ jobs:
           setEnv: true
           retrieve: |
             [
-             {"secretPath": "test:sdk:simple", "password": "value1"}
+               {"secretPath": "ci:tests:dsv-github-action:secret-01", "secretKey": "username", "outputVariable": "RETURN_VALUE_1"},
+               {"secretPath": "ci:tests:dsv-github-action:secret-01", "secretKey": "password", "outputVariable": "RETURN_VALUE_2"}
             ]
-      - name: validate-first-value
-        if: always()
-        run: |
-          echo ${{ steps.dsv.outputs.RET_1 }}
-          echo ${{ env.RET_1 }}
