@@ -31,6 +31,6 @@ jobs:
           setEnv: true
           retrieve: |
             [
-               {"secretPath": "ci:tests:dsv-github-action:secret-01", "secretKey": "username", "outputVariable": "RETURN_VALUE_1"},
-               {"secretPath": "ci:tests:dsv-github-action:secret-01", "secretKey": "password", "outputVariable": "RETURN_VALUE_2"}
+               {"secretPath": "test:sdk:simple", "secretKey": "username", "outputVariable": "RETURN_VALUE_1"},
+               {"secretPath": "test:sdk:simple", "secretKey": "password", "outputVariable": "RETURN_VALUE_2"}
             ]
