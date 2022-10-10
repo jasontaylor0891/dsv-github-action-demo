@@ -31,7 +31,7 @@ jobs:
           setEnv: true
           retrieve: |
             [
-             {"secretPath": "test:sdk:simple", "secretKey": "value1"}
+             {"secretPath": "test:sdk:simple", "password": "value1"}
             ]
       - name: validate-first-value
         if: always()
