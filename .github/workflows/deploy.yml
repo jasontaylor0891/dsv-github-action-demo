@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: dsv-github-action
-        uses: DelineaXPM/dsv-github-action@v1.0.4
+        uses: DelineaXPM/dsv-github-action@v1.0.6
         # uses: delineaxpm/dsv-github-action@main # renovate: tag=v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
