@@ -39,3 +39,12 @@ jobs:
         run: |
           echo ${{ steps.dsv.outputs.RETURN_VALUE_1 }}
           echo ${{ steps.dsv.outputs.RETURN_VALUE_2 }}
+          
+      - name: Copy a folder to s3
+        uses: prewk/s3-cp-action@v2
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          source: './index.html'
+          dest: 's3://dsvgithubdemo'
+          flags: --recursive
