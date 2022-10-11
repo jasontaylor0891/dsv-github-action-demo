@@ -38,8 +38,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ steps.dsv.outputs.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ steps.dsv.outputs.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ steps.get.outputs.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ steps.get.outputs.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
