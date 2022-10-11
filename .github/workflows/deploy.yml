@@ -32,10 +32,10 @@ jobs:
             [
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID"},
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY"},
-               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "AWS_BUCKET_NAME"}
+               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal"}
             ]
       - name: Write Bucket name
-        run: echo ${{ steps.get.outputs.AWS_BUCKET_NAME }}
+        run: echo ${{ steps.get.outputs.secretVal }}
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
