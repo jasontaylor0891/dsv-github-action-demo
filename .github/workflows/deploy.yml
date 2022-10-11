@@ -47,4 +47,4 @@ jobs:
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 sync . s3://dsvgithubdemo
+          aws s3 sync index.html s3://dsvgithubdemo
