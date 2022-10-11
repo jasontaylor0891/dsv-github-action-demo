@@ -31,19 +31,20 @@ jobs:
           setEnv: true
           retrieve: |
             [
-               {"secretPath": "test:sdk:simple", "secretKey": "username", "outputVariable": "RETURN_VALUE_1"},
-               {"secretPath": "test:sdk:simple", "secretKey": "password", "outputVariable": "RETURN_VALUE_2"}
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID"},
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY"}
+               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "AWS_BUCKET_NAME"}
             ]
-#      - name: validate-first-value
-#        if: always()
-#        run: |
-#          echo ${{ steps.dsv.outputs.RETURN_VALUE_1 }}
-#          echo ${{ steps.dsv.outputs.RETURN_VALUE_2 }}
+      - name: validate-dsv-value
+        if: always()
+        run: |
+          echo ${{ steps.dsv.outputs.AWS_BUCKET_NAME }}
+          
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ steps.dsv.outputs.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ steps.dsv.outputs.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
