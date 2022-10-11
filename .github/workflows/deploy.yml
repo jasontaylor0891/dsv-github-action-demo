@@ -27,7 +27,7 @@ jobs:
           domain: ${{ secrets.DSV_SERVER }}
           clientId: ${{ secrets.DSV_CLIENT_ID }}
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
-          setEnv: false
+          setEnv: true
           retrieve: |
             [
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID"},
