@@ -34,11 +34,11 @@ jobs:
                {"secretPath": "test:sdk:simple", "secretKey": "username", "outputVariable": "RETURN_VALUE_1"},
                {"secretPath": "test:sdk:simple", "secretKey": "password", "outputVariable": "RETURN_VALUE_2"}
             ]
-      - name: validate-first-value
-        if: always()
-        run: |
-          echo ${{ steps.dsv.outputs.RETURN_VALUE_1 }}
-          echo ${{ steps.dsv.outputs.RETURN_VALUE_2 }}
+#      - name: validate-first-value
+#        if: always()
+#        run: |
+#          echo ${{ steps.dsv.outputs.RETURN_VALUE_1 }}
+#          echo ${{ steps.dsv.outputs.RETURN_VALUE_2 }}
           
       - name: Copy a folder to s3
         uses: prewk/s3-cp-action@v2
