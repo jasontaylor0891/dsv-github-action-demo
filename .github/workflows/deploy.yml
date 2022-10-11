@@ -34,12 +34,7 @@ jobs:
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY"},
                {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "AWS_BUCKET_NAME"}
             ]
-      - name: validate-first-value
-        if: always()
-        run: |
-          echo ${{ steps.dsv.outputs.AWS_BUCKET_NAME }}
-          
-          
+      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -48,4 +43,4 @@ jobs:
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 cp index.html s3://${{ steps.dsv.outputs.AWS_BUCKET_NAME }}
+          aws s3 cp index.html s3://dsvgithubdemo
