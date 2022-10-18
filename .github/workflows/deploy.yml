@@ -39,6 +39,8 @@ jobs:
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
-          echo ${{ env.secretVal3 }}
           aws s3 cp index.html s3://${{ secrets.AWS_BUCKET }}
-          
+      - name: validate-first-value
+        if: always()
+        run: |
+          "This is a secret value you shouldn't echo 👉 ${{ env.secretVal3 }}"   
