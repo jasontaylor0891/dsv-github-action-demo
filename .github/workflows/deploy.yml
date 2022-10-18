@@ -17,11 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - id: init
-        run: |
-           echo "::add-mask::${{ env.SECRETVAL1}}"
-           echo "::add-mask::${{ env.SECRETVAL2}}"
-           echo "::add-mask::${{ env.SECRETVAL3}}"
       - uses: actions/checkout@v3
       - id: dsv
         uses: DelineaXPM/dsv-github-action@v2.0.1
@@ -31,9 +26,9 @@ jobs:
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
           retrieve: |
             [
-               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "secretVal1"},
-               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "secretVal2"},
-               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal3"}  
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "SECRETVAL1"},
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "SECRETVAL2"},
+               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "SECRETVAL3"}  
             ]
           
       - name: Configure AWS Credentials
