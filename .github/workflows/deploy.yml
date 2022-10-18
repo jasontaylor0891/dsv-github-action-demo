@@ -32,7 +32,7 @@ jobs:
             ]
       - name: mask dsv secret
         run: |
-          echo "::add-mask::$SECRETVAL1" 
+          echo "::add-mask::${{ env.SECRETVAL1}}" 
           echo "SECRETVAL1=$SECRETVAL1" >> $GITHUB_ENV
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
