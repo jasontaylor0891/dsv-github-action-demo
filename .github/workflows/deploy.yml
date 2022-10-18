@@ -19,15 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: dsv-github-action
-        uses: DelineaXPM/dsv-github-action@v1.0.6
-        # uses: delineaxpm/dsv-github-action@main # renovate: tag=v1
+        uses: DelineaXPM/dsv-github-action@v2.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           domain: ${{ secrets.DSV_SERVER }}
           clientId: ${{ secrets.DSV_CLIENT_ID }}
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
-          setEnv: true
           retrieve: |
             [
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID"},
@@ -35,13 +33,13 @@ jobs:
                {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal"}
             ]
       - name: Write Bucket name
-        run: echo ${{ steps.get.outputs.secretVal }}
+        run: echo ${{ env.secretVal }}
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ steps.get.outputs.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ steps.get.outputs.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
