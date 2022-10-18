@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      SECRETVAL1: "1"
-      SECRETVAL2: "2"
-      SECRETVAL3: "3"
+      env.SECRETVAL1: ""
+      env.SECRETVAL2: ""
+      env.SECRETVAL3: "3"
     steps:
       - uses: actions/checkout@v3
       - id: init
