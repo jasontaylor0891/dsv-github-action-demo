@@ -36,7 +36,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID1 }}
+          aws-access-key-id: ${{ env.secretVal1 }}
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY1 }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
