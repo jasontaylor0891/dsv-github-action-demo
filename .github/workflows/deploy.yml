@@ -30,14 +30,11 @@ jobs:
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "SECRETVAL2"},
                {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "SECRETVAL3"}  
             ]
-      - name: mask dsv secret
-        run: |
-          echo "::add-mask::${{ env.SECRETVAL1}}" 
-          echo "SECRETVAL1=$SECRETVAL1" >> $GITHUB_ENV
+            
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.SECRETVAL1}}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
