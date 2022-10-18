@@ -43,4 +43,4 @@ jobs:
       - name: validate-first-value
         if: always()
         run: |
-          "This is a secret value you shouldn't echo 👉 ${{ env.secretVal3 }}"   
+          echo ${{ env.secretVal3 }}"   
