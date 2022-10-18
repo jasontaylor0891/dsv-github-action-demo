@@ -30,7 +30,7 @@ jobs:
               
             ]
       - name: Write Bucket name
-        run: echo ${{ secrets.AWS_ACCESS_KEY_ID1 }}
+        run: echo ${{ secrets.secretVal1 }}
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
