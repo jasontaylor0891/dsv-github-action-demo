@@ -16,8 +16,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      SECRETVAL1: "1"
+      SECRETVAL2: "2"
+      SECRETVAL3: "3"
     steps:
       - uses: actions/checkout@v3
+      - id: init
+        run: |
+          echo "::add-mask::&SECRETVAL1"
+          echo "::add-mask::&SECRETVAL2"
+          echo "::add-mask::&SECRETVAL3"
       - id: dsv
         uses: DelineaXPM/dsv-github-action@v2.0.1
         with:
