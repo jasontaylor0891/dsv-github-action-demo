@@ -27,8 +27,7 @@ jobs:
           retrieve: |
             [
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID1"}
-               #{"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY1"},
-               #{"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal1"}
+              
             ]
       - name: Write Bucket name
         run: echo ${{ env.AWS_ACCESS_KEY_ID1 }}
