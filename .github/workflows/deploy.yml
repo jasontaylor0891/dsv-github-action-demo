@@ -26,18 +26,18 @@ jobs:
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
           retrieve: |
             [
-               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID"},
-               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY"},
-               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal"}
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_keyid", "outputVariable": "AWS_ACCESS_KEY_ID1"},
+               {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "AWS_SECRET_ACCESS_KEY1"},
+               {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal1"}
             ]
       - name: Write Bucket name
-        run: echo ${{ env.secretVal }}
+        run: echo ${{ env.secretVal1 }}
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID1 }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY1 }}
           aws-region: us-east-2
       - name: Copy files to the test website with the AWS CLI
         run: |
