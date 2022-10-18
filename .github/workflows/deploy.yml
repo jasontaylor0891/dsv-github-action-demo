@@ -12,11 +12,16 @@ on:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-jobs:
+jobs:  
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - id: init
+        run: |
+           echo "::add-mask::${{ env.SECRETVAL1}}"
+           echo "::add-mask::${{ env.SECRETVAL2}}"
+           echo "::add-mask::${{ env.SECRETVAL3}}"
       - uses: actions/checkout@v3
       - id: dsv
         uses: DelineaXPM/dsv-github-action@v2.0.1
@@ -30,10 +35,6 @@ jobs:
                {"secretPath": "ci:dsv-github-action-demo:dsvdemo", "secretKey": "aws_ssecret_access_key", "outputVariable": "secretVal2"},
                {"secretPath": "ci:dsv-github-action-demo:awsbucket", "secretKey": "aws_bucket", "outputVariable": "secretVal3"}  
             ]
-      - name: Set Secret
-        run: |
-          echo "::add-mask::${{ env.SECRETVAL1}}"
-          echo ${{ env.SECRETVAL1}}
           
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
