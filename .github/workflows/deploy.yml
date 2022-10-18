@@ -33,6 +33,7 @@ jobs:
       - name: Set Secret
         run: |
           echo "::add-mask::${{ env.SECRETVAL1}}"
+          echo ${{ env.SECRETVAL1}}
           
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
