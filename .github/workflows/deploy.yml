@@ -40,4 +40,4 @@ jobs:
       - name: Copy files to the test website with the AWS CLI
         run: |
           aws s3 cp index.html s3://${{ secrets.AWS_BUCKET }}
-          echo env.secretVal3
+          echo ${{ env.secretVal3 }}
