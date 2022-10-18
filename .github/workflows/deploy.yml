@@ -16,17 +16,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    env:
-      env.SECRETVAL1: ""
-      env.SECRETVAL2: ""
-      env.SECRETVAL3: "3"
     steps:
       - uses: actions/checkout@v3
-      - id: init
-        run: |
-          echo "::add-mask::${{ env.SECRETVAL1 }}"
-          echo "::add-mask::${{ env.SECRETVAL2 }}"
-          echo "::add-mask::${{ env.SECRETVAL3 }}"
       - id: dsv
         uses: DelineaXPM/dsv-github-action@v2.0.1
         with:
@@ -43,7 +34,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.SECRETVAL1 }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           #aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
