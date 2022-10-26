@@ -1,5 +1,22 @@
 # DSV Github Actions Demo
 
+This demo uses Delinea DevOps Secrets Vault for retrieval of your secrets.
+
+Now, instead of storing all your secrets directly in your GitHub repo configuration, store the client credentials to connect and retrieve the desired secret or multiple secrets from your secure vault.
+
+
+
+## How This Works
+
+## Inputs
+
+| Name           | Description                                              |
+| -------------- | -------------------------------------------------------- |
+| `domain`       | Tenant domain name (e.g. example.secretsvaultcloud.com). |
+| `clientId`     | Client ID for authentication.                            |
+| `clientSecret` | Client Secret for authentication.                        |
+| `retrieve`     | Data to retrieve from DSV in json format.                |
+
 ## Prerequisites
 
 This demo uses authentication based on Client Credentials, i.e. via Client ID and Client Secret.
