@@ -5,7 +5,6 @@ This demo uses Delinea DevOps Secrets Vault for retrieval of your secrets.
 Now, instead of storing all your secrets directly in your GitHub repo configuration, store the client credentials to connect and retrieve the desired secret or multiple secrets from your secure vault.
 
 
-
 ## How This Works
 
 ## Inputs
@@ -65,3 +64,14 @@ dsv policy create \
   --resources "secrets:${secretpath}:<.*>"
 ```
 
+## AWS Setup for demo
+
+AWS User Setup:
+
+Create an AWS user with programmatic access and give the user a policy to access S3.
+
+AWS S3 Setup:
+
+Use the following instructions to enable website hosting for your S3 bucket
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html
